@@ -6,7 +6,8 @@ on:
       - lindy/sigma-workflows
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
 
 jobs:
   sigma-rule-convert:
