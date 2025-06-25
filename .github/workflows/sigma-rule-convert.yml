@@ -54,6 +54,7 @@ jobs:
 
       - name: Run the conversion script
         run: |
+          mkdir testrules/
           cd pysigma-backend-panther
           poetry run  sigma convert -s -t panther -f default ../sigma/rules -O output_dir=../testrules/
           ls -la ../testrules/
