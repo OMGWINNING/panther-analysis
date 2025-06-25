@@ -13,7 +13,7 @@ def rule(event):
     if (
         event.get("eventSource") == EVENT_SOURCE and
         event.get("eventName") in ADD_DEL_IAM_IDP_SAML_EVENT_NAMES and
-        event.deep_get("userIdentity", "sessionContext", "sessionIssuer", "userName") not in ["pulumi", "AtlantisRole", None]
+        event.deep_get("userIdentity", "sessionContext", "sessionIssuer", "userName") not in ["pulumi", "AtlantisRole"]
     ):
         return True
     return False
