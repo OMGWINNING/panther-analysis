@@ -73,3 +73,9 @@ jobs:
 
       - name: Validate the converted rules
         run: ls -la testrules/
+
+      - name: Checkout OMGWINNING Panter Analysis
+        uses: actions/checkout@v4
+
+      - name: Validate the converted rules
+        run: ls -la
