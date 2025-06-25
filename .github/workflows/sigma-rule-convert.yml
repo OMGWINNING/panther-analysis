@@ -17,9 +17,6 @@ jobs:
       - name: Checkout OMGWINNING Panter Analysis
         uses: actions/checkout@v4
 
-      - name: Validate the converted rules
-        run: ls -la rules/
-
       - name: Checkout Sigma HQ Codebase rules
         uses: actions/checkout@v4
         with:
@@ -57,23 +54,25 @@ jobs:
 
       - name: Run the conversion script agaisnt sigma rules
         run: |
+          mkdir rules/sigma_rules/
           cd pysigma-backend-panther
-          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules -O output_dir=../rules/
+          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules -O output_dir=../rules/sigma_rules/
         continue-on-error: true
 
       - name: Run the conversion script agaisnt sigma rules emerging threats
         run: |
           cd pysigma-backend-panther
-          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-emerging-threats -O output_dir=../rules/
+          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-emerging-threats -O output_dir=../rules/sigma_rules/
         continue-on-error: true
 
       - name: Run the conversion script agaisnt sigma rules threat hunting
         run: |
           cd pysigma-backend-panther
-          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-threat-hunting -O output_dir=../rules/
+          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-threat-hunting -O output_dir=../rules/sigma_rules/
         continue-on-error: true
 
       - name: Validate the converted rules
-        run: ls -la rules/
-
+        run: |
+          ls -la rules/sigma_rules/
+          ls -la rules/
 
