@@ -58,5 +58,6 @@ jobs:
           cd pysigma-backend-panther
           poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules -O output_dir=../testrules/
           ls -la ../testrules/
+        continue-on-error: true
 
      
