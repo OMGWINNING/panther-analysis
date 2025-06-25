@@ -17,6 +17,9 @@ jobs:
       - name: Checkout OMGWINNING Panter Analysis
         uses: actions/checkout@v4
 
+      - name: Validate the converted rules
+        run: ls -la rules/
+
       - name: Checkout Sigma HQ Codebase rules
         uses: actions/checkout@v4
         with:
@@ -30,9 +33,6 @@ jobs:
         with:
           repository: panther-labs/pySigma-backend-panther
           path: pysigma-backend-panther
-
-      - name: List root directory
-        run: ls -la
 
       - name: Set python version
         uses: actions/setup-python@v5.4.0
@@ -57,25 +57,23 @@ jobs:
 
       - name: Run the conversion script agaisnt sigma rules
         run: |
-          mkdir testrules/
           cd pysigma-backend-panther
-          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules -O output_dir=../testrules/
+          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules -O output_dir=../rules/
         continue-on-error: true
 
       - name: Run the conversion script agaisnt sigma rules emerging threats
         run: |
           cd pysigma-backend-panther
-          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-emerging-threats -O output_dir=../testrules/
+          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-emerging-threats -O output_dir=../rules/
         continue-on-error: true
 
       - name: Run the conversion script agaisnt sigma rules threat hunting
         run: |
           cd pysigma-backend-panther
-          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-threat-hunting -O output_dir=../testrules/
+          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-threat-hunting -O output_dir=../rules/
         continue-on-error: true
 
       - name: Validate the converted rules
-        run: ls -la testrules/
+        run: ls -la rules/
 
-      - name: Validate the converted rules
-        run: ls -la
+
