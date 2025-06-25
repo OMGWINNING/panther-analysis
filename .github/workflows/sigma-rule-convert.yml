@@ -1,7 +1,7 @@
 name: Sigma Rule Convert
 
 on:
-  pull_request:
+  push:
     branches:
       - lindy/sigma-workflows
 
