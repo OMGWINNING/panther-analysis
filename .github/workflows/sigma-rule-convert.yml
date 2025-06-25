@@ -60,4 +60,4 @@ jobs:
         continue-on-error: true
 
       - name: Validate the converted rules
-        run: ls -la ../testrules/
+        run: ls -la testrules/
