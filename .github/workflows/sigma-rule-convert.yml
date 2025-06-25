@@ -18,8 +18,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: SigmaHQ/sigma
-          ref: main
+          ref: master
           path: sigma
+          fetch-depth: 1
 
       - name: Checkout Panther Sigma Backend
         uses: actions/checkout@v4
