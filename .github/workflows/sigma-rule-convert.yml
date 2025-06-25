@@ -61,14 +61,12 @@ jobs:
 
       - name: Run the conversion script agaisnt sigma rules emerging threats
         run: |
-          mkdir testrules/
           cd pysigma-backend-panther
           poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-emerging-threats -O output_dir=../testrules/
         continue-on-error: true
 
       - name: Run the conversion script agaisnt sigma rules threat hunting
         run: |
-          mkdir testrules/
           cd pysigma-backend-panther
           poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-threat-hunting -O output_dir=../testrules/
         continue-on-error: true
