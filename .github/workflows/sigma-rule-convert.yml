@@ -56,7 +56,7 @@ jobs:
         run: |
           mkdir testrules/
           cd pysigma-backend-panther
-          poetry run  sigma convert -s -t panther -f default ../sigma/rules -O output_dir=../testrules/
+          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules -O output_dir=../testrules/
           ls -la ../testrules/
 
      
