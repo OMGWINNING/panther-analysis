@@ -34,9 +34,5 @@ jobs:
       - name: Verify Poetry version
         run: poetry --version
 
-      - name: Check for Removed Rules
-        run: |
-          pipenv run make check-deprecated
-
       - name: Install dependencies
         run: poetry install
