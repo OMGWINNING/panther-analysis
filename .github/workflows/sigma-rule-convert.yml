@@ -117,3 +117,4 @@ jobs:
             --head update-sigma-rules-${GITHUB_RUN_ID}
         env:
           GH_TOKEN: ${{ secrets.GIT_ENV_API_TOKEN }}
+          # todo, change PAT
