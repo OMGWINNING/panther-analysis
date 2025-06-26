@@ -7,7 +7,9 @@ LogTypes:
   - AWS.CloudTrail
 Reports:
   MITRE ATT&CK:
-    - T1133:T1136.003:T1556.006
+    - TA0011:T1133
+    - TA0006:T1136.003
+    - TA0006:T1556.006
 Severity: Critical
 Tags:
   - Beta
