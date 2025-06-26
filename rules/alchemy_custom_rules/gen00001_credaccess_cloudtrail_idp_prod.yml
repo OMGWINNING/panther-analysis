@@ -1,7 +1,7 @@
 AnalysisType: rule
-Filename: GEN00001-credaccess-cloudtrail-idp-prod.py
-RuleID: "GEN00001.credaccess.cloudtrail.idp.prod"
-DisplayName: GEN00001-credaccess-cloudtrail-idp-prod
+Filename: gen00001_credaccess_cloudtrail_idp_prod.py
+RuleID: GEN00001.credaccess.cloudtrail.idp.prod
+DisplayName: GEN00001_credaccess_cloudtrail_idp_prod
 Enabled: true
 LogTypes:
   - AWS.CloudTrail
