@@ -3,20 +3,23 @@ ADD_DEL_IAM_IDP_SAML_EVENT_NAMES = [
     "DeleteSAMLProvider",
     "UpdateSAMLProvider",
     "CreateOpenIDConnectProvider",
-    "DeleteOpenIDConnectProvider"
+    "DeleteOpenIDConnectProvider",
 ]
 
 EVENT_SOURCE = "iam.amazonaws.com"
 
+ALLOWED_USERS = ["pulumi", "AtlantisRole"]
+
 
 def rule(event):
-    if (
-            event.get("eventSource") == EVENT_SOURCE and
-            event.get("eventName") in ADD_DEL_IAM_IDP_SAML_EVENT_NAMES and
-            event.deep_get(
-                "userIdentity", "sessionContext", "sessionIssuer", "userName"
-            ) not in ["pulumi", "AtlantisRole"]
-    ):
+    does_event_name_match: bool = event.get("eventName") in ADD_DEL_IAM_IDP_SAML_EVENT_NAMES
+    does_event_source_match: bool = event.get("eventSource") == EVENT_SOURCE
+    session_user_name: str = event.deep_get(
+        "userIdentity", "sessionContext", "sessionIssuer", "userName"
+    )
+    does_session_user_match: bool = session_user_name in ALLOWED_USERS
+
+    if does_event_name_match and does_event_source_match and does_session_user_match:
         return True
     return False
 
