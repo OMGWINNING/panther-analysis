@@ -98,13 +98,11 @@ jobs:
           git commit -m "Update Sigma Rules with latest changes" --gpg-sign
           git push origin HEAD:update-sigma-rules-${GITHUB_RUN_ID}
 
-      # - name: Create Pull Request
-      #   uses: peter-evans/create-pull-request@v5
-      #   with:
-      #     token: ${{ secrets.PANTHER_BOT_AUTOMATION_TOKEN }}
-      #     commit-message: "Update Airflow with latest Panther Analysis changes"
-      #     title: "Update Airflow with latest Panther Analysis changes"
-      #     body: "Automated update from Panther Analysis repository"
-      #     branch: "update-airflow-${GITHUB_RUN_ID}"
-      #     base: "main"
-      #     path: "destination"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "Update Panther with latest Sigma Rules"
+          title: "Update Panther with latest Sigma Rules"
+          body: "Automated update from Panther Analysis repository"
+          branch: "update-sigma-rules-${GITHUB_RUN_ID}"
+          base: "develop"
