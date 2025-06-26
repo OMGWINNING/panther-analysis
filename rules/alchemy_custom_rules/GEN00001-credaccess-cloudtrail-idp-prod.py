@@ -12,7 +12,7 @@ ALLOWED_USERS = ["pulumi", "AtlantisRole"]
 
 
 def rule(event):
-    does_event_name_match: bool = event.get("eventName") in ADD_DEL_IAM_IDP_SAML_EVENT_NAMES
+    does_event_name_match: bool = event.get("eventName") in EVENT_NAMES
     does_event_source_match: bool = event.get("eventSource") == EVENT_SOURCE
     session_user_name: str = event.deep_get(
         "userIdentity", "sessionContext", "sessionIssuer", "userName"
