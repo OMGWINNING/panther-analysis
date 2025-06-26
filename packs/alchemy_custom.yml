@@ -1,0 +1,7 @@
+AnalysisType: pack
+PackID: AlchemyManaged.AWS.Custom
+Description: Group of all Custom Alchemy AWS detections
+PackDefinition:
+  IDs:
+    - AlchemyCustom.AWS.IAM.AddDeleteIAMIDPSAML
+DisplayName: "Alchemy Custom AWS Pack"
