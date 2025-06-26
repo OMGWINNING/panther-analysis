@@ -116,4 +116,4 @@ jobs:
             --base develop \
             --head update-sigma-rules-${GITHUB_RUN_ID}
           env:
-            GITHUB_TOKEN: ${{ secrets.GIT_ENV_API_TOKEN }}
+            GH_TOKEN: ${{ secrets.GIT_ENV_API_TOKEN }}
