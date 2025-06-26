@@ -19,7 +19,7 @@ def rule(event):
     )
     does_session_user_match: bool = session_user_name in ALLOWED_USERS
 
-    if does_event_name_match and does_event_source_match and does_session_user_match:
+    if does_event_name_match and does_event_source_match and not does_session_user_match:
         return True
     return False
 

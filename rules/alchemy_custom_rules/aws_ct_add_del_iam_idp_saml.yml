@@ -17,7 +17,7 @@ CreateAlert: true
 Description: >
   Identifies when a user (not Atlantis or Pulumi) adds or deletes an IAM IDP SAML, which could indicate a potential security risk.
 Runbook: Make sure that the user is authorized and got approval from Security to add or delete an IAM IDP SAML. If not, investigate the event further.
-Reference: 
+Reference: https://www.notion.so/alchemotion/Unauthorized-IDP-or-SAML-Provider-Changes-in-IAM-21e069f2006680968badd3d246fa5ebe
 Tests:
   - Name: Pulumi Creates a new OpenID Connect Provider
     ExpectedResult: false
