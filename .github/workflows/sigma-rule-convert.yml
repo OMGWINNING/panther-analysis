@@ -98,6 +98,14 @@ jobs:
           git commit -m "Update Sigma Rules with latest changes" --gpg-sign
           git push origin HEAD:update-sigma-rules-${GITHUB_RUN_ID}
 
+      - name: Ensure working directory is clean
+        run: |
+          git status
+          git diff --exit-code
+
+      - name: Clean up temp files
+        run: git clean -fd    
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
