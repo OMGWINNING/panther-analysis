@@ -101,7 +101,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: "Update Panther with latest Sigma Rules"
+          commit: false
           title: "Update Panther with latest Sigma Rules"
           body: "Automated update from Panther Analysis repository"
           branch: "update-sigma-rules-${GITHUB_RUN_ID}"
