@@ -1,4 +1,4 @@
-ADD_DEL_IAM_IDP_SAML_EVENT_NAMES = [
+EVENT_NAMES = [
     "CreateSAMLProvider",
     "DeleteSAMLProvider",
     "UpdateSAMLProvider",

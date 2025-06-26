@@ -1,7 +1,7 @@
 AnalysisType: rule
-Filename: aws_ct_add_del_iam_idp_saml.py
-RuleID: "AlchemyCustom.AWS.IAM.AddDeleteIAMIDPSAML"
-DisplayName: "Add/Delete AWS IAM IDP SAML"
+Filename: GEN00001-credaccess-cloudtrail-idp-prod.py
+RuleID: "GEN00001.credaccess.cloudtrail.idp.prod"
+DisplayName: GEN00001-credaccess-cloudtrail-idp-prod
 Enabled: true
 LogTypes:
   - AWS.CloudTrail
