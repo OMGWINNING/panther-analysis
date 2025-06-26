@@ -1,6 +1,6 @@
 AnalysisType: rule
 Filename: aws_ct_add_del_iam_idp_saml.py
-RuleID: "AlchemyCustom.AWS.IAM.AddDeleteIAMIDPSAML"
+RuleID: "AWS.IAM.AddDeleteIAMIDPSAML"
 DisplayName: "Add/Delete AWS IAM IDP SAML"
 Enabled: true
 LogTypes:
