@@ -1,9 +1,8 @@
 name: Sigma Rule Convert
 
 on:
-  push:
-    branches:
-      - lindy/sigma-workflows
+  schedule:
+    - cron: '0 12 * * 2' 
 
 permissions:
   contents: write
