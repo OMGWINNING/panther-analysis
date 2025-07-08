@@ -1,7 +1,7 @@
 AnalysisType: rule
-Filename: gen00002-defev-cloudtrail-stoplogging-prod.py
+Filename: gen00002_defev_cloudtrail_stoplogging_prod.py
 RuleID: gen00002.defev.cloudtrail.stoplogging.prod
-DisplayName: gen00001_credaccess_cloudtrail_idp_prod
+DisplayName: gen00002_defev_cloudtrail_stoplogging_prod
 Enabled: true
 LogTypes:
   - AWS.CloudTrail
@@ -26,7 +26,7 @@ Tests:
         "eventID": "b65a1065-eeb5-4902-8580-20eac98cdc1e",
         "eventName": "StopLogging",
         "eventSource": "cloudtrail.amazonaws.com",
-        "eventTime": "2025-06-24 23:34:46",
+        "eventTime": "2025-07-08 10:00:00",
         "eventType": "AwsApiCall",
         "eventVersion": "1.11",
         "managementEvent": true,
@@ -34,7 +34,7 @@ Tests:
         "recipientAccountId": "905418441132",
         "requestID": "00ff5947-be66-4842-9dc7-1ef4b4baea40",
         "sourceIPAddress": "44.241.59.217",
-        "userAgent": "APN/1.0 Pulumi/1.0 Pulumi/1.0 Pulumi-Aws/0.11+compatible (+https://pulumi.com) aws-sdk-go-v2/1.36.3 ua/2.1 os/linux lang/go#1.23.8 md/GOOS#linux md/GOARCH#amd64 api/iam#1.41.0 m/g",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
         "userIdentity": {
           "accessKeyId": "ASIA5FTZFAGWES2VRZM4",
           "accountId": "905418441132",
