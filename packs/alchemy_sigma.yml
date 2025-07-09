@@ -18,6 +18,7 @@ PackDefinition:
     - aws_disable_bucket_versioning.yml
     - aws_ec2_disable_encryption.yml
     - aws_ec2_import_key_pair_activity.yml
+    - aws_ec2_startup_script_change.yml
     - aws_ec2_vm_export_failure.yml
     - aws_ecs_task_definition_cred_endpoint_query.yml
     - aws_efs_fileshare_modified_or_deleted.yml
@@ -41,6 +42,7 @@ PackDefinition:
     - aws_route_53_domain_transferred_lock_disabled.yml
     - aws_route_53_domain_transferred_to_another_account.yml
     - aws_s3_data_management_tampering.yml
+    - aws_securityhub_finding_evasion.yml
     - aws_snapshot_backup_exfiltration.yml
     - aws_sso_idp_change.yml
     - aws_sts_assumerole_misuse.yml
@@ -51,6 +53,7 @@ PackDefinition:
     - gcp_bucket_enumeration.yml
     - gcp_bucket_modified_or_deleted.yml
     - gcp_dlp_re_identifies_sensitive_information.yml
+    - gcp_dns_zone_modified_or_deleted.yml
     - gcp_firewall_rule_modified_or_deleted.yml
     - gcp_full_network_traffic_packet_capture.yml
     - gcp_kubernetes_admission_controller.yml
