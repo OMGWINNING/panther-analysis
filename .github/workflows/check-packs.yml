@@ -11,7 +11,7 @@ permissions:
 jobs:
   check_packs:
     name: check packs
-    runs-on: ubuntu-latest
+    runs-on: 2c8gb-custom-runner
 
     steps:
       - name: Checkout panther-analysis
