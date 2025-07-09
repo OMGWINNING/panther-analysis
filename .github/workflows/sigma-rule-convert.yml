@@ -4,10 +4,10 @@ name: Sigma Rule Convert
 #   schedule:
 #     - cron: '0 12 * * 2' 
 
-on:
-  push:
-    branches:
-      - 'lindy/sigma-packs'
+# on:
+#   push:
+#     branches:
+#       - 'lindy/sigma-packs'
 permissions:
   contents: write
   pull-requests: write
