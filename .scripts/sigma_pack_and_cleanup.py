@@ -27,7 +27,6 @@ def get_rules(directory):
     for file_path in directory_path.rglob('*'):
      if file_path.is_file():
         rules[file_path.name] = file_path
-    print(rules)    
     return rules
 
 def create_pack(rules):
@@ -61,8 +60,8 @@ def main():
     sigma_rules = check_for_collisions(sigma_rules)
 
     #Create pack
-    pack = create_pack(sigma_rules) 
-    print(pack)
+    # pack = create_pack(sigma_rules) 
+    # print(pack)
 
 if __name__ == "__main__":
     main()
