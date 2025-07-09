@@ -57,9 +57,12 @@ jobs:
           cd pysigma-backend-panther
           poetry install
 
-      - name: Run the conversion script agaisnt sigma rules
+      - name: Create temp rules directory
         run: |
           mkdir temp_rules/sigma_rules/
+
+      - name: Run the conversion script agaisnt sigma rules
+        run: |
           cd pysigma-backend-panther
           poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules -O output_dir=../temp_rules/sigma_rules/
         continue-on-error: true
