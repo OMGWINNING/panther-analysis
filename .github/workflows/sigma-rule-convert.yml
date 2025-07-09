@@ -1,8 +1,13 @@
 name: Sigma Rule Convert
+#TODO, create pack and fix validate collision issues. If collides, add sigma
+# on:
+#   schedule:
+#     - cron: '0 12 * * 2' 
 
 on:
-  schedule:
-    - cron: '0 12 * * 2' 
+  push:
+    branches:
+      - 'lindy/sigma-packs'
 
 permissions:
   contents: write
@@ -76,6 +81,12 @@ jobs:
           ls -la rules/sigma_rules/
           ls -la rules/
 
+      - name: Create pack and fix collisions
+        run: |
+          cd pip install pyyaml
+          python .scripts/sigma_pack_and_cleanup.py
+
+
       - name: Set up Git user
         run: |
           git config --global user.email "sa-gh-alchemy-github-bot@alchemy.com"
@@ -93,6 +104,7 @@ jobs:
       - name: Update Repo with latest Sigma Rules
         run: |
           git add rules/sigma_rules/
+          git add packs/alchemy_sigma.yml
           git status
           git commit -m "Update Sigma Rules with latest changes" --gpg-sign
           git push origin HEAD:update-sigma-rules-${GITHUB_RUN_ID}
