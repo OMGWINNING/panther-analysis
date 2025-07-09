@@ -56,7 +56,7 @@ def create_pack(rules):
 
 def main():
     #Check for collisions
-    sigma_rules = get_rules(directory= "./rules/sigma_rules")
+    sigma_rules = get_rules(directory= "./temp_rules/sigma_rules")
     sigma_rules = check_for_collisions(sigma_rules)
 
     #Create pack
