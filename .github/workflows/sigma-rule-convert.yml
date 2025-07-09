@@ -83,7 +83,7 @@ jobs:
 
       - name: Create pack and fix collisions
         run: |
-          cd pip install pyyaml
+          pip install pyyaml
           python .scripts/sigma_pack_and_cleanup.py
 
 

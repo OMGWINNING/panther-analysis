@@ -1,9 +1,3 @@
-#TODO, create pack and fix validate collision issues. If collides, add sigma
-
-#Check for collisions in previous rules
-
-#create pack with correct rules.
-
 import os
 from pathlib import Path
 import yaml
