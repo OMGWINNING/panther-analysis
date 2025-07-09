@@ -5,11 +5,17 @@ import yaml
 
 def check_for_collisions(rules):
     panther_rules = get_rules(directory= "./rules")
+    bad_rules = []
     for key in rules.keys():
         if key in panther_rules.keys():
             print(f"Collision found: {key}")
             handle_collision(rules[key])
-            rules.pop(key)
+            bad_rules.append(key)
+
+    #Remove collisions from sigma rules and return new values
+    for rule in bad_rules:
+        rules.pop(rule)
+    return rules
 
 def handle_collision(rule):
     Path(rule).unlink()
@@ -51,10 +57,10 @@ def create_pack(rules):
 def main():
     #Check for collisions
     sigma_rules = get_rules(directory= "./rules/sigma_rules")
-    check_for_collisions(sigma_rules)
+    sigma_rules = check_for_collisions(sigma_rules)
 
     #Create pack
-    pack = create_pack(sigma_rules)
+    pack = create_pack(sigma_rules) 
     print(pack)
 
 if __name__ == "__main__":
