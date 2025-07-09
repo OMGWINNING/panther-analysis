@@ -34,7 +34,8 @@ def create_pack(rules):
     pack_ids = []
     for key in rules.keys():
         if ".yml" in key:
-            pack_ids.append(key)
+            id_name = key.split(".")[0]
+            pack_ids.append(id_name)
 
     pack = {
         "AnalysisType": "pack",
