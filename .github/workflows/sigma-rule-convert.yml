@@ -64,24 +64,25 @@ jobs:
       - name: Run the conversion script agaisnt sigma rules
         run: |
           cd pysigma-backend-panther
-          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules -O output_dir=../temp_rules/
+          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules -O output_dir=../rules/sigma_rules/
         continue-on-error: true
 
       - name: Run the conversion script agaisnt sigma rules emerging threats
         run: |
           cd pysigma-backend-panther
-          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-emerging-threats -O output_dir=../temp_rules/
+          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-emerging-threats -O output_dir=../rules/sigma_rules/
         continue-on-error: true
 
       - name: Run the conversion script agaisnt sigma rules threat hunting
         run: |
           cd pysigma-backend-panther
-          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-threat-hunting -O output_dir=../temp_rules/
+          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-threat-hunting -O output_dir=../rules/sigma_rules/
         continue-on-error: true
 
       - name: Validate the converted rules
         run: |
-          ls -la temp_rules/
+          ls -la rules/sigma_rules/
+          ls -la rules/
 
       # - name: Create pack and fix collisions
       #   run: |
@@ -110,7 +111,7 @@ jobs:
           
       - name: Update Repo with latest Sigma Rules
         run: |
-          git add temp_rules/
+          git add rules/sigma_rules/
           git status
           git commit -m "Update Sigma Rules with latest changes" --gpg-sign
           git push origin HEAD:update-sigma-rules-${GITHUB_RUN_ID}
