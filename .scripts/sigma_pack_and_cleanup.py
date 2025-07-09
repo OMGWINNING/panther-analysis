@@ -36,14 +36,18 @@ def create_pack(rules):
             id_name = key.split(".")[0]
             pack_ids.append(id_name)
 
+
+    log_types = ["Standard.AWS.CloudTrail", "Standard.GCP.AuditLog", "Standard.Github.Audit", "Standard.Okta.SystemLog"]
+    pack_ids = sorted(pack_ids) + log_types
+
     pack = {
         "AnalysisType": "pack",
         "PackID": "AlchemyManaged.Sigma.Custom",
         "Description": "Group of all Alchemy Sigma detections",
         "PackDefinition": {
-            "IDs": sorted(pack_ids)
+            "IDs": pack_ids
         },
-        "DisplayName": "Sigma Rules Coverted by Alchemy"
+        "DisplayName": "'Sigma Rules Coverted by Alchemy'"
     }
 
     class IndentDumper(yaml.SafeDumper):
@@ -56,7 +60,7 @@ def create_pack(rules):
 
 def main():
     #Check for collisions
-    sigma_rules = get_rules(directory= "./temp_rules/")
+    sigma_rules = get_rules(directory= "../temp_rules/")
     sigma_rules = check_for_collisions(sigma_rules)
 
     #Create pack
