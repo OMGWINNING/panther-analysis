@@ -90,6 +90,7 @@ jobs:
 
       - name: Move temp rules to sigma rules 
         run: |
+          mkdir rules/sigma_rules/
           mv temp_rules/ rules/sigma_rules/
 
       - name: Set up Git user
