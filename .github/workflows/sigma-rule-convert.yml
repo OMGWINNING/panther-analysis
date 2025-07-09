@@ -110,7 +110,7 @@ jobs:
           
       - name: Update Repo with latest Sigma Rules
         run: |
-          git add testrules/
+          git add temp_rules/
           git status
           git commit -m "Update Sigma Rules with latest changes" --gpg-sign
           git push origin HEAD:update-sigma-rules-${GITHUB_RUN_ID}
