@@ -88,11 +88,11 @@ jobs:
       #     pip install pyyaml
       #     python .scripts/sigma_pack_and_cleanup.py
 
-      - name: Move temp rules to sigma rules 
-        run: |
-          mkdir rules/sigma_rules/
-          mv temp_rules/* rules/sigma_rules/
-          chmod -R 777 rules/sigma_rules/
+      # - name: Move temp rules to sigma rules 
+      #   run: |
+      #     mkdir rules/sigma_rules/
+      #     mv temp_rules/* rules/sigma_rules/
+      #     chmod -R 777 rules/sigma_rules/
 
       - name: Set up Git user
         run: |
@@ -110,7 +110,7 @@ jobs:
           
       - name: Update Repo with latest Sigma Rules
         run: |
-          git add rules/sigma_rules/
+          git add testrules/
           git status
           git commit -m "Update Sigma Rules with latest changes" --gpg-sign
           git push origin HEAD:update-sigma-rules-${GITHUB_RUN_ID}
