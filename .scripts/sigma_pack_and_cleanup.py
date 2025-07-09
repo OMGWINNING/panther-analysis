@@ -60,8 +60,7 @@ def main():
     sigma_rules = check_for_collisions(sigma_rules)
 
     #Create pack
-    # pack = create_pack(sigma_rules) 
-    # print(pack)
+    pack = create_pack(sigma_rules) 
 
 if __name__ == "__main__":
     main()

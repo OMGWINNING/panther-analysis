@@ -83,10 +83,10 @@ jobs:
         run: |
           ls -la temp_rules/
 
-      - name: Create pack and fix collisions
-        run: |
-          pip install pyyaml
-          python .scripts/sigma_pack_and_cleanup.py
+      # - name: Create pack and fix collisions
+      #   run: |
+      #     pip install pyyaml
+      #     python .scripts/sigma_pack_and_cleanup.py
 
       - name: Move temp rules to sigma rules 
         run: |
