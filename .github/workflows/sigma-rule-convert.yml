@@ -56,15 +56,16 @@ jobs:
           cd pysigma-backend-panther
           poetry install
 
-      - name: Run the conversion script agaisnt sigma rules
-        run: |
-          mkdir rules/sigma_rules/
-          cd pysigma-backend-panther
-          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules -O output_dir=../rules/sigma_rules/
-        continue-on-error: true
+      # - name: Run the conversion script agaisnt sigma rules
+      #   run: |
+      #     mkdir rules/sigma_rules/
+      #     cd pysigma-backend-panther
+      #     poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules -O output_dir=../rules/sigma_rules/
+      #   continue-on-error: true
 
       - name: Run the conversion script agaisnt sigma rules emerging threats
         run: |
+          mkdir rules/sigma_rules/
           cd pysigma-backend-panther
           poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-emerging-threats -O output_dir=../rules/sigma_rules/
         continue-on-error: true
