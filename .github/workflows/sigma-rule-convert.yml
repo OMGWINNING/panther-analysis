@@ -59,29 +59,29 @@ jobs:
 
       - name: Create temp rules directory
         run: |
-          mkdir temp_rules/sigma_rules/
+          mkdir temp_rules/
 
       - name: Run the conversion script agaisnt sigma rules
         run: |
           cd pysigma-backend-panther
-          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules -O output_dir=../temp_rules/sigma_rules/
+          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules -O output_dir=../temp_rules/
         continue-on-error: true
 
       - name: Run the conversion script agaisnt sigma rules emerging threats
         run: |
           cd pysigma-backend-panther
-          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-emerging-threats -O output_dir=../temp_rules/sigma_rules/
+          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-emerging-threats -O output_dir=../temp_rules/
         continue-on-error: true
 
       - name: Run the conversion script agaisnt sigma rules threat hunting
         run: |
           cd pysigma-backend-panther
-          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-threat-hunting -O output_dir=../temp_rules/sigma_rules/
+          poetry run  sigma convert --skip-unsupported -t panther -f default ../sigma/rules-threat-hunting -O output_dir=../temp_rules/
         continue-on-error: true
 
       - name: Validate the converted rules
         run: |
-          ls -la temp_rules/sigma_rules/
+          ls -la temp_rules/
 
       - name: Create pack and fix collisions
         run: |
@@ -90,7 +90,7 @@ jobs:
 
       - name: Move temp rules to sigma rules 
         run: |
-          mv temp_rules/sigma_rules/ rules/sigma_rules/
+          mv temp_rules/ rules/sigma_rules/
 
       - name: Set up Git user
         run: |
