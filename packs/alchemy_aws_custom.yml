@@ -5,7 +5,6 @@ PackDefinition:
   IDs:
     - gen00001.credaccess.cloudtrail.idp.prod
     - gen00002.defev.cloudtrail.stoplogging.prod
-    - gen00003.privesc.github.patgranted.prod
     - Standard.Github.Audit
     - Standard.AWS.CloudTrail
 DisplayName: "Alchemy Custom AWS Pack"
