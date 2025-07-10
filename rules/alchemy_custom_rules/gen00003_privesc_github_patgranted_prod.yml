@@ -1,6 +1,6 @@
 AnalysisType: rule
 Filename: gen00003_privesc_github_patgranted_prod.py
-RuleID: gen00003.privesc.github.patgranted.prod
+RuleID: gen00003_privesc_github_patgranted_prod
 DisplayName: gen00003_privesc_github_patgranted_prod
 Enabled: true
 LogTypes:
