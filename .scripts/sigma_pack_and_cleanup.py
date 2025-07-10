@@ -4,7 +4,7 @@ import yaml
 
 
 def check_for_collisions(rules):
-    panther_rules = get_rules(directory= "./rules")
+    panther_rules = get_rules(directory= "../rules")
     bad_rules = []
     for key in rules.keys():
         if key in panther_rules.keys():
