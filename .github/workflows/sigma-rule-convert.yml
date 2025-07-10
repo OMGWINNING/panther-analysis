@@ -111,6 +111,7 @@ jobs:
       - name: Update Repo with latest Sigma Rules
         run: |
           git add rules/sigma_rules/
+          git add packs/alchemy_sigma.yml
           git status
           git commit -m "Update Sigma Rules with latest changes" --gpg-sign
           git push origin HEAD:update-sigma-rules-${GITHUB_RUN_ID}
