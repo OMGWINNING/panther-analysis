@@ -1,5 +1,4 @@
 name: Sigma Rule Convert
-#TODO, create pack and fix validate collision issues. If collides, add sigma
 on:
   schedule:
     - cron: '0 12 * * 2' 
