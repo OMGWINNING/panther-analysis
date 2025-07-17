@@ -20,11 +20,25 @@ jobs:
       - name: Fetch latest release from panther-labs/panther-analysis
         id: get_release
         run: |
-          curl -s https://api.github.com/repos/panther-labs/panther-analysis/releases/latest > release.json
-          cat release.json
-          sha=$(jq -r '.target_commitish' release.json)
-          echo "Latest release target_commitish: $sha"
-          echo "release_sha=$sha" >> $GITHUB_OUTPUT
+          release_json=$(curl -s https://api.github.com/repos/panther-labs/panther-analysis/releases/latest)
+          tag_name=$(echo "$release_json" | jq -r '.tag_name')
+          echo "Latest tag: $tag_name"
+
+          tag_ref_json=$(curl -s https://api.github.com/repos/panther-labs/panther-analysis/git/ref/tags/$tag_name)
+          object_url=$(echo "$tag_ref_json" | jq -r '.object.url')
+          echo "Tag object URL: $object_url"
+
+          tag_object=$(curl -s $object_url)
+          object_type=$(echo "$tag_object" | jq -r '.type')
+
+          if [ "$object_type" = "tag" ]; then
+            commit_sha=$(echo "$tag_object" | jq -r '.object.sha')
+          else
+            commit_sha=$(echo "$tag_object" | jq -r '.sha')
+          fi
+
+          echo "Resolved commit SHA: $commit_sha"
+          echo "commit_sha=$commit_sha" >> $GITHUB_OUTPUT
 
       - name: Use SHA
         run: echo "Release commit SHA is ${{ steps.get_release.outputs.release_sha }}"
