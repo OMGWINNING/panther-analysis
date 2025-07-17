@@ -69,7 +69,7 @@ jobs:
 
       - name: Check if code is checkout
         run: |
-          cp panther-analysis-latest-release/* . 
+          cp -r panther-analysis-latest-release/* . 
           git status
 
 
