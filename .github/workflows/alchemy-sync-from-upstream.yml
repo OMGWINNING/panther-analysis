@@ -14,6 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Checkout OMGWINNING Panter Analysis
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #4.2.2
+
+
       - name: Fetch latest release from panther-labs/panther-analysis
         id: get_release
         run: |
@@ -46,6 +51,9 @@ jobs:
         with:
           repository: panther-labs/panther-analysis
           ref: ${{steps.get_release.outputs.commit_sha}}
+          path: panther-analysis-latest-release
 
       - name: Check if code is checkout
         run: ls -la
+
+
