@@ -41,4 +41,4 @@ jobs:
           echo "commit_sha=$commit_sha" >> $GITHUB_OUTPUT
 
       - name: Use SHA
-        run: echo "Release commit SHA is ${{ steps.get_release.outputs.release_sha }}"
+        run: echo "Release commit SHA is ${{ steps.get_release.outputs.commit_sha }}"
