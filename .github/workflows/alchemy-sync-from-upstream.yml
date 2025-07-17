@@ -9,9 +9,6 @@ on:
 #     - cron: "00 15 * * 3"
 #   workflow_dispatch: # or on button click
 
-env:
-  YOUR_REPO_PRIMARY_BRANCH_NAME: "develop"
-
 jobs:
   check_upstream:
     runs-on: ubuntu-latest
@@ -42,3 +39,13 @@ jobs:
 
       - name: Use SHA
         run: echo "Release commit SHA is ${{ steps.get_release.outputs.commit_sha }}"
+
+      - name: Checkout Panter Analysis Latest Release
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #4.2.2
+
+        with:
+          repository: panther-labs/panther-analysis
+          ref: ${{steps.get_release.outputs.commit_sha}}
+
+      - name: Check if code is checkout
+        run: ls -la
