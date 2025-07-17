@@ -67,10 +67,25 @@ jobs:
           git_commit_gpgsign: true
 
 
-      - name: Check if code is checkout
+      - name: Clean up code and commit
         run: |
           cp -r panther-analysis-latest-release/* . 
+          rm -rf panther-analysis-latest-release
           git status
+          git add -A
+          git commit -m "Sync from upstream"
+          git push origin HEAD:sync-from-upstream-${GITHUB_RUN_ID}
+
+
+      - name: Create PR with GitHub CLI
+        run: |
+          gh pr create \
+            --title "Update Panther with latest sync from Panther Analysis upstream" \
+            --body "Automated update from Panther Analysis repository" \
+            --base develop \
+            --head sync-from-upstream-${GITHUB_RUN_ID}
+        env:
+          GH_TOKEN: ${{ secrets.GIT_ENV_API_TOKEN }}
 
 
 
