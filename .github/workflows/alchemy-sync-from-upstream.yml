@@ -1,0 +1,30 @@
+name: Sync Panther Analysis from Upstream
+on:
+  push:
+    branches:
+      - lindy/fix-upstream-sync
+# on:
+#   schedule:
+#     # 15:00Z, every Wednesday
+#     - cron: "00 15 * * 3"
+#   workflow_dispatch: # or on button click
+
+env:
+  YOUR_REPO_PRIMARY_BRANCH_NAME: "develop"
+
+jobs:
+  check_upstream:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fetch latest release from panther-labs/panther-analysis
+        id: get_release
+        run: |
+          curl -s https://api.github.com/repos/panther-labs/panther-analysis/releases/latest > release.json
+          cat release.json
+          sha=$(jq -r '.target_commitish' release.json)
+          echo "Latest release target_commitish: $sha"
+          echo "release_sha=$sha" >> $GITHUB_OUTPUT
+
+      - name: Use SHA
+        run: echo "Release commit SHA is ${{ steps.get_release.outputs.release_sha }}"
