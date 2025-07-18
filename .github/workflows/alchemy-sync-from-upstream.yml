@@ -78,7 +78,6 @@ jobs:
 
       - name: Clean up code and commit
         run: |
-          cp -r panther-analysis-latest-release/* . 
           rm -rf panther-analysis-latest-release
           git add -A
           git status
