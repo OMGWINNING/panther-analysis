@@ -18,7 +18,7 @@ def read_yaml_and_get_disabled_rules(file_path):
         if data.get("Enabled") == False:
             print(file_path)
 
-def get_updated_panther_analysis_rules(src, dst):
+def get_updated_panther_analysis_rules(src_dir, dst_dir):
     exclusions = {".git"}
 
     for item in os.listdir(src_dir):
