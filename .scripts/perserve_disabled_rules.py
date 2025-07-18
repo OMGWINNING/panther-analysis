@@ -24,7 +24,7 @@ def main():
     for rule in rules:
         read_yaml_and_get_disabled_rules(rule)
 
-    shutil.copytree("./panther-analysis-latest-release/", "../", dirs_exist_ok=True)
+    shutil.copytree("./panther-analysis-latest-release/", "./", dirs_exist_ok=True)
 if __name__ == "__main__":
     main()
 
