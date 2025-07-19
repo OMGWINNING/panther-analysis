@@ -8,10 +8,8 @@ on:
 #     # 15:00Z, every Wednesday
 #     - cron: "00 15 * * 3"
 #   workflow_dispatch: # or on button click
-permissions:
-  contents: write
-  pull-requests: write
-  workflows: write
+permissions: write-all
+
 
 jobs:
   check_upstream:
