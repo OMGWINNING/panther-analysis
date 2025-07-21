@@ -1,3 +1,5 @@
+name: Test
+
 on:
   pull_request:
   merge_group:
@@ -7,6 +9,7 @@ permissions:
 
 jobs:
   test:
+    if: github.event.pull_request.head.repo.fork == true
     name: Test
     runs-on: ubuntu-latest
     steps:
@@ -30,6 +33,7 @@ jobs:
           pipenv run panther_analysis_tool test --show-failures-only
 
   test-authenticated:
+    if: github.event.pull_request.head.repo.fork == false
     name: Test
     runs-on: ubuntu-latest
     env:
