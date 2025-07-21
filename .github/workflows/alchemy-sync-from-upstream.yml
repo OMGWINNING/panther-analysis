@@ -78,6 +78,7 @@ jobs:
       - name: Check disabled rules
         run: |
           pip install pyyaml
+          pip install ruamel.yaml
           python .scripts/perserve_disabled_rules.py
 
       - name: Clean up code and commit
