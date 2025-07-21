@@ -4,6 +4,7 @@ import yaml
 import shutil
 
 def get_rules(directory):
+    '''Gets all current panther rules'''
     directory_path = Path(directory)
     rules = []
     for file_path in directory_path.rglob('*'):
@@ -11,12 +12,16 @@ def get_rules(directory):
         rules.append(str(file_path))
     return rules
 
-def read_yaml_and_get_disabled_rules(file_path):
-
-    with open(file_path, "r") as file:
-        data = yaml.safe_load(file)
-        if data.get("Enabled") == False:
-            print(file_path)
+def read_yaml_and_get_disabled_rules(rules):
+    '''Reads a list of rules and returns rules that are currently disabled'''
+    disabled_rules = []
+    for file_path in rules:
+        with open(file_path, "r") as file:
+            data = yaml.safe_load(file)
+            if data.get("Enabled") == False:
+                print(file_path)
+                disabled_rules.append(file_path)
+    return disabled_rules
 
 def get_updated_panther_analysis_rules(src_dir, dst_dir, rules_to_preserve):
     exclusions = {".git"}
@@ -51,11 +56,10 @@ def handle_rule_to_preserve(src_path):
         f.write(rule_yaml)
 
 def main():
-    rules_to_preserve = get_rules("./rules/")
-    for rule in rules_to_preserve:
-        read_yaml_and_get_disabled_rules(rule)
+    current_rules = get_rules("./rules/")
+    disabled_rules = read_yaml_and_get_disabled_rules(current_rules)
 
-    get_updated_panther_analysis_rules("./panther-analysis-latest-release/", "./", rules_to_preserve)
+    get_updated_panther_analysis_rules("./panther-analysis-latest-release/", "./", disabled_rules)
 if __name__ == "__main__":
     main()
 
