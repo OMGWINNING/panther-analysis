@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import yaml
+from ruamel.yaml import YAML
 import shutil
 
 def get_rules(directory):
@@ -42,17 +43,21 @@ def get_updated_panther_analysis_rules(src_dir, dst_dir, disabled_rules):
             shutil.copy2(src_path, dst_path)
 
 def handle_rule_to_preserve(src_path):
+    ryaml = YAML()
     with open(src_path, "r") as file:
-        data = yaml.safe_load(file)
-        data["Enabled"] = False
+        data = ryaml.load(file)
     
-    class IndentDumper(yaml.SafeDumper):
-        def increase_indent(self, flow=False, indentless=False):
-            return super().increase_indent(flow, False)
+    data["Enabled"] = False
+    with open(src_path, "w") as file:
+        ryaml.dump(data, file)
 
-    rule_yaml = yaml.dump(data, Dumper=IndentDumper, sort_keys=False)
-    with open(src_path, "w") as f:
-        f.write(rule_yaml)
+    # class IndentDumper(yaml.SafeDumper):
+    #     def increase_indent(self, flow=False, indentless=False):
+    #         return super().increase_indent(flow, False)
+
+    # rule_yaml = yaml.dump(data, Dumper=IndentDumper, sort_keys=False)
+    # with open(src_path, "w") as f:
+    #     f.write(rule_yaml)
 
 def main():
     current_rules = get_rules("./rules/")
