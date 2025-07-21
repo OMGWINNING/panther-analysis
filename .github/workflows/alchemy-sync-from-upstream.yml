@@ -19,7 +19,8 @@ jobs:
 
       - name: Checkout OMGWINNING Panter Analysis
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #4.2.2
-
+        with: 
+          token: ${{ secrets.GIT_ENV_API_TOKEN }}
 
       - name: Fetch latest release from panther-labs/panther-analysis
         id: get_release
@@ -54,6 +55,7 @@ jobs:
           repository: panther-labs/panther-analysis
           ref: ${{steps.get_release.outputs.commit_sha}}
           path: panther-analysis-latest-release
+          token: ${{ secrets.GIT_ENV_API_TOKEN }}
 
       - name: Set up Git user
         run: |
