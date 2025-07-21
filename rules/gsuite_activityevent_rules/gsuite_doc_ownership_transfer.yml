@@ -1,7 +1,7 @@
 AnalysisType: rule
 Filename: gsuite_doc_ownership_transfer.py
-RuleID: "GSuite.DocOwnershipTransfer"
-DisplayName: "GSuite Document External Ownership Transfer"
+RuleID: GSuite.DocOwnershipTransfer
+DisplayName: GSuite Document External Ownership Transfer
 Enabled: false
 LogTypes:
   - GSuite.ActivityEvent
@@ -13,27 +13,29 @@ Reports:
   MITRE ATT&CK:
     - TA0009:T1213
 Severity: Low
-Description: >
-  A GSuite document's ownership was transferred to an external party.
+Description: 'A GSuite document''s ownership was transferred to an external party.
+
+  '
 Reference: https://support.google.com/drive/answer/2494892?hl=en&co=GENIE.Platform%3DDesktop&sjid=864417124752637253-EU
-Runbook: >
-  Verify that this document did not contain sensitive or private company information.
+Runbook: 'Verify that this document did not contain sensitive or private company information.
+
+  '
 SummaryAttributes:
   - actor:email
 Tests:
   - Name: Ownership Transferred Within Organization
     ExpectedResult: false
     Log:
-      {
-        "id": { "applicationName": "admin" },
-        "name": "TRANSFER_DOCUMENT_OWNERSHIP",
-        "parameters": { "NEW_VALUE": "homer.simpson@example.com" },
-      }
+      id:
+        applicationName: admin
+      name: TRANSFER_DOCUMENT_OWNERSHIP
+      parameters:
+        NEW_VALUE: homer.simpson@example.com
   - Name: Document Transferred to External User
     ExpectedResult: true
     Log:
-      {
-        "id": { "applicationName": "admin" },
-        "name": "TRANSFER_DOCUMENT_OWNERSHIP",
-        "parameters": { "NEW_VALUE": "monty.burns@badguy.com" },
-      }
+      id:
+        applicationName: admin
+      name: TRANSFER_DOCUMENT_OWNERSHIP
+      parameters:
+        NEW_VALUE: monty.burns@badguy.com

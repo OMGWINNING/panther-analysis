@@ -1,7 +1,7 @@
 AnalysisType: rule
 Filename: github_repo_hook_modified.py
-RuleID: "GitHub.Repo.HookModified"
-DisplayName: "DEPRECATED - GitHub Web Hook Modified"
+RuleID: GitHub.Repo.HookModified
+DisplayName: DEPRECATED - GitHub Web Hook Modified
 Enabled: false
 LogTypes:
   - GitHub.Audit
@@ -19,40 +19,40 @@ Tests:
   - Name: GitHub - Webhook Created
     ExpectedResult: true
     Log:
-      {
-        "actor": "cat",
-        "action": "hook.create",
-        "data":
-          {
-            "hook_id": 111222333444555,
-            "events": ["fork", "public", "pull_request", "push", "repository"],
-          },
-        "org": "my-org",
-        "p_log_type": "GitHub.Audit",
-        "repository": "my-org/my-repo",
-      }
+      actor: cat
+      action: hook.create
+      data:
+        hook_id: 111222333444555
+        events:
+          - fork
+          - public
+          - pull_request
+          - push
+          - repository
+      org: my-org
+      p_log_type: GitHub.Audit
+      repository: my-org/my-repo
   - Name: GitHub - Webhook Deleted
     ExpectedResult: true
     Log:
-      {
-        "actor": "cat",
-        "action": "hook.destroy",
-        "data":
-          {
-            "hook_id": 111222333444555,
-            "events": ["fork", "public", "pull_request", "push", "repository"],
-          },
-        "org": "my-org",
-        "p_log_type": "GitHub.Audit",
-        "repository": "my-org/my-repo",
-      }
+      actor: cat
+      action: hook.destroy
+      data:
+        hook_id: 111222333444555
+        events:
+          - fork
+          - public
+          - pull_request
+          - push
+          - repository
+      org: my-org
+      p_log_type: GitHub.Audit
+      repository: my-org/my-repo
   - Name: GitHub - Non Webhook Event
     ExpectedResult: false
     Log:
-      {
-        "actor": "cat",
-        "action": "org.invite_member",
-        "org": "my-org",
-        "p_log_type": "GitHub.Audit",
-        "repository": "my-org/my-repo",
-      }
+      actor: cat
+      action: org.invite_member
+      org: my-org
+      p_log_type: GitHub.Audit
+      repository: my-org/my-repo

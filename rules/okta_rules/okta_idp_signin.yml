@@ -1,7 +1,7 @@
 AnalysisType: rule
 Filename: okta_idp_signin.py
-RuleID: "Okta.Identity.Provider.SignIn"
-DisplayName: "Okta Identity Provider Sign-in"
+RuleID: Okta.Identity.Provider.SignIn
+DisplayName: Okta Identity Provider Sign-in
 Enabled: false
 LogTypes:
   - Okta.SystemLog
@@ -9,21 +9,23 @@ Tags:
   - Configuration Required
 Reports:
   MITRE ATT&CK:
-    - TA0001:T1199 # Trusted Relationship
-    - TA0003:T1098 # Account Manipulation
+    - TA0001:T1199
+    - TA0003:T1098
 Severity: High
-Description: >
-  A user has signed in using a 3rd party Identity Provider.
-  Attackers have been observed configuring a second Identity Provider to act as an "impersonation app"
-  to access applications within the compromised Org on behalf of other users. This second Identity Provider,
-  also controlled by the attacker, would act as a “source” IdP in an inbound federation relationship
-  (sometimes called “Org2Org”) with the target.
-  From this “source” IdP, the threat actor manipulated the username parameter for targeted users in the second
-  “source” Identity Provider to match a real user in the compromised “target” Identity Provider.
-  This provided the ability to Single sign-on (SSO) into applications in the target IdP as the targeted user.
-  Do not use this rule if your organization uses legitimate 3rd-party Identity Providers.
-Reference: >
-  https://sec.okta.com/articles/2023/08/cross-tenant-impersonation-prevention-and-detection
+Description: "A user has signed in using a 3rd party Identity Provider. Attackers\
+  \ have been observed configuring a second Identity Provider to act as an \"impersonation\
+  \ app\" to access applications within the compromised Org on behalf of other users.\
+  \ This second Identity Provider, also controlled by the attacker, would act as a\
+  \ \u201Csource\u201D IdP in an inbound federation relationship (sometimes called\
+  \ \u201COrg2Org\u201D) with the target. From this \u201Csource\u201D IdP, the threat\
+  \ actor manipulated the username parameter for targeted users in the second \u201C\
+  source\u201D Identity Provider to match a real user in the compromised \u201Ctarget\u201D\
+  \ Identity Provider. This provided the ability to Single sign-on (SSO) into applications\
+  \ in the target IdP as the targeted user. Do not use this rule if your organization\
+  \ uses legitimate 3rd-party Identity Providers.\n"
+Reference: 'https://sec.okta.com/articles/2023/08/cross-tenant-impersonation-prevention-and-detection
+
+  '
 DedupPeriodMinutes: 30
 Threshold: 1
 Tests:
@@ -45,14 +47,15 @@ Tests:
           geolocation:
             lat: 20
             lon: -25
-          postalCode: "12345"
+          postalCode: '12345'
           state: Ohio
         ipAddress: 1.3.2.4
         userAgent:
           browser: CHROME
           os: Mac OS X
-          rawUserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36
-        zone: "null"
+          rawUserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+            (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36
+        zone: 'null'
       debugcontext:
         debugData:
           requestId: AbCdEf12G
@@ -64,7 +67,7 @@ Tests:
       outcome:
         reason: INVALID_CREDENTIALS
         result: FAILURE
-      published: "2022-06-22 18:18:29.015"
+      published: '2022-06-22 18:18:29.015'
       request:
         ipChain:
           - geographicalContext:
@@ -73,7 +76,7 @@ Tests:
               geolocation:
                 lat: 20
                 lon: -25
-              postalCode: "12345"
+              postalCode: '12345'
               state: Ohio
             ip: 1.3.2.4
             version: V4
@@ -94,7 +97,7 @@ Tests:
         id: ABcDeFgG
         type: WEB
       uuid: AbC-123-XyZ
-      version: "0"
+      version: '0'
     Name: Other Event
   - ExpectedResult: true
     Log:
@@ -114,14 +117,15 @@ Tests:
           geolocation:
             lat: 20
             lon: -25
-          postalCode: "12345"
+          postalCode: '12345'
           state: Ohio
         ipAddress: 1.3.2.4
         userAgent:
           browser: CHROME
           os: Mac OS X
-          rawUserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36
-        zone: "null"
+          rawUserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+            (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36
+        zone: 'null'
       debugcontext:
         debugData:
           requestId: AbCdEf12G
@@ -132,7 +136,7 @@ Tests:
       legacyeventtype: core.user.factor.attempt_fail
       outcome:
         result: SUCCESS
-      published: "2022-06-22 18:18:29.015"
+      published: '2022-06-22 18:18:29.015'
       request:
         ipChain:
           - geographicalContext:
@@ -141,7 +145,7 @@ Tests:
               geolocation:
                 lat: 20
                 lon: -25
-              postalCode: "12345"
+              postalCode: '12345'
               state: Ohio
             ip: 1.3.2.4
             version: V4
@@ -162,5 +166,5 @@ Tests:
         id: ABcDeFgG
         type: WEB
       uuid: AbC-123-XyZ
-      version: "0"
+      version: '0'
     Name: FastPass Phishing Block Event
