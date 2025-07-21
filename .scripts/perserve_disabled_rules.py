@@ -24,14 +24,14 @@ def get_updated_panther_analysis_rules(src_dir, dst_dir, rules_to_preserve):
     for item in os.listdir(src_dir):
         if item in exclusions:
             continue
-        print(src_path)
         src_path = os.path.join(src_dir, item)
         dst_path = os.path.join(dst_dir, item)
 
         if os.path.isdir(src_path):
             shutil.copytree(src_path, dst_path, dirs_exist_ok=True)
         else:
-            if src_path in rules_to_preserve:
+            print(src_dir)
+            if src_dir in rules_to_preserve:
                 print(f"Preserving {src_path}")
                 handle_rule_to_preserve(src_path)
             else:
