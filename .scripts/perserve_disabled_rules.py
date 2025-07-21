@@ -19,13 +19,17 @@ def read_yaml_and_get_disabled_rules(rules):
         with open(file_path, "r") as file:
             data = yaml.safe_load(file)
             if data.get("Enabled") == False:
-                print(file_path)
                 disabled_rules.append(file_path)
     return disabled_rules
 
-def get_updated_panther_analysis_rules(src_dir, dst_dir, rules_to_preserve):
+def get_updated_panther_analysis_rules(src_dir, dst_dir, disabled_rules):
     exclusions = {".git"}
-    print(rules_to_preserve)
+    print(disabled_rules)
+
+    for rule in disabled_rules:
+        new_rule = f"{src_dir}{rule}"
+        handle_rule_to_preserve(new_rule)
+
     for item in os.listdir(src_dir):
         if item in exclusions:
             continue
@@ -35,12 +39,7 @@ def get_updated_panther_analysis_rules(src_dir, dst_dir, rules_to_preserve):
         if os.path.isdir(src_path):
             shutil.copytree(src_path, dst_path, dirs_exist_ok=True)
         else:
-            print(item)
-            if item in rules_to_preserve:
-                print(f"Preserving {item}")
-                handle_rule_to_preserve(item)
-            else:
-                shutil.copy2(src_path, dst_path)
+            shutil.copy2(src_path, dst_path)
 
 def handle_rule_to_preserve(src_path):
     with open(src_path, "r") as file:
