@@ -8,7 +8,7 @@ def get_rules(directory):
     rules = []
     for file_path in directory_path.rglob('*'):
      if file_path.is_file() and file_path.name.endswith(".yml"):
-        rules.append(file_path)
+        rules.append(str(file_path))
     return rules
 
 def read_yaml_and_get_disabled_rules(file_path):
@@ -30,10 +30,10 @@ def get_updated_panther_analysis_rules(src_dir, dst_dir, rules_to_preserve):
         if os.path.isdir(src_path):
             shutil.copytree(src_path, dst_path, dirs_exist_ok=True)
         else:
-            print(src_dir)
-            if src_dir in rules_to_preserve:
-                print(f"Preserving {src_path}")
-                handle_rule_to_preserve(src_path)
+            print(item)
+            if item in rules_to_preserve:
+                print(f"Preserving {item}")
+                handle_rule_to_preserve(item)
             else:
                 shutil.copy2(src_path, dst_path)
 
