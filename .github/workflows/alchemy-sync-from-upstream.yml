@@ -1,15 +1,12 @@
-name: Sync Panther Analysis from Upstream
-on:
-  push:
-    branches:
-      - lindy/fix-upstream-sync
-# on:
-#   schedule:
-#     # 15:00Z, every Wednesday
-#     - cron: "00 15 * * 3"
-#   workflow_dispatch: # or on button click
-permissions: write-all
+name: Sync Panther Analysis from Upstream - Alchemy
 
+on:
+  schedule:
+    # 15:00Z, every Wednesday
+    - cron: "00 15 * * 3"
+  workflow_dispatch: # or on button click
+
+permissions: write-all
 
 jobs:
   check_upstream:

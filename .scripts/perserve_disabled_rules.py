@@ -23,9 +23,9 @@ def read_yaml_and_get_disabled_rules(rules):
                 disabled_rules.append(file_path)
     return disabled_rules
 
-def get_updated_panther_analysis_rules(src_dir, dst_dir, disabled_rules):
+def update_panther_analysis_rules(src_dir, dst_dir, disabled_rules):
+    '''Gets the updated panther analysis rules and preserves the disabled rules by overwriting the rules/ directory'''
     exclusions = {".git"}
-    print(disabled_rules)
 
     for rule in disabled_rules:
         new_rule = f"{src_dir}{rule}"
@@ -43,7 +43,7 @@ def get_updated_panther_analysis_rules(src_dir, dst_dir, disabled_rules):
             shutil.copy2(src_path, dst_path)
 
 def handle_rule_to_preserve(src_path):
-    
+    '''Modifies the rule to be disabled'''
     key_to_update = 'Enabled'
     new_value = 'false'
 
@@ -58,27 +58,15 @@ def handle_rule_to_preserve(src_path):
             if pattern.match(line):
                 line = pattern.sub(rf'\1{new_value}', line)
             f.write(line)
-    # ryaml = YAML()
-    # with open(src_path, "r") as file:
-    #     data = ryaml.load(file)
-    
-    # data["Enabled"] = False
-    # with open(src_path, "w") as file:
-    #     ryaml.dump(data, file)
-
-    # class IndentDumper(yaml.SafeDumper):
-    #     def increase_indent(self, flow=False, indentless=False):
-    #         return super().increase_indent(flow, False)
-
-    # rule_yaml = yaml.dump(data, Dumper=IndentDumper, sort_keys=False)
-    # with open(src_path, "w") as f:
-    #     f.write(rule_yaml)
 
 def main():
+    #Get current rules and disabled rules
     current_rules = get_rules("./rules/")
     disabled_rules = read_yaml_and_get_disabled_rules(current_rules)
 
-    get_updated_panther_analysis_rules("./panther-analysis-latest-release/", "./", disabled_rules)
+    #Get updated rules from upstream and preserve disabled rules
+    update_panther_analysis_rules("./panther-analysis-latest-release/", "./", disabled_rules)
+
 if __name__ == "__main__":
     main()
 
