@@ -1,8 +1,8 @@
 import os
 from pathlib import Path
 import yaml
-from ruamel.yaml import YAML
 import shutil
+import re
 
 def get_rules(directory):
     '''Gets all current panther rules'''
@@ -43,13 +43,28 @@ def get_updated_panther_analysis_rules(src_dir, dst_dir, disabled_rules):
             shutil.copy2(src_path, dst_path)
 
 def handle_rule_to_preserve(src_path):
-    ryaml = YAML()
-    with open(src_path, "r") as file:
-        data = ryaml.load(file)
     
-    data["Enabled"] = False
-    with open(src_path, "w") as file:
-        ryaml.dump(data, file)
+    key_to_update = 'Enabled'
+    new_value = 'false'
+
+    # Regex to match the exact line starting with `Enabled:`
+    pattern = re.compile(rf'^({re.escape(key_to_update)}\s*:\s*)\S+', re.IGNORECASE)
+
+    with open(src_path, 'r') as f:
+        lines = f.readlines()
+
+    with open(src_path, 'w') as f:
+        for line in lines:
+            if pattern.match(line):
+                line = pattern.sub(rf'\1{new_value}', line)
+            f.write(line)
+    # ryaml = YAML()
+    # with open(src_path, "r") as file:
+    #     data = ryaml.load(file)
+    
+    # data["Enabled"] = False
+    # with open(src_path, "w") as file:
+    #     ryaml.dump(data, file)
 
     # class IndentDumper(yaml.SafeDumper):
     #     def increase_indent(self, flow=False, indentless=False):
