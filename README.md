@@ -275,7 +275,7 @@ Follow the instructions [here](https://docs.panther.com/panther-developer-workfl
 
 ## Getting Updates
 
-When you want to pull in the latest changes from this repository, we recommend leveraging the [included GitHub Action](https://docs.panther.com/panther-developer-workflows/ci-cd/detections-repo/public-fork#keeping-in-sync-with-upstream).
+When you want to pull in the latest changes from this repository, we recommend leveraging the [included GitHub Action](https://docs.panther.com/panther-developer-workflows/detections-repo/public-fork#keeping-in-sync-with-upstream).
 
 If you wish to sync manually, the process below can be run from a terminal.
 
@@ -303,4 +303,3 @@ Otherwise, running `npm uninstall prettier` will remove Prettier.
 # License
 
 This repository is licensed under [Apache License, Version 2.0](https://github.com/panther-labs/panther-analysis/blob/main/LICENSE.txt).
-
