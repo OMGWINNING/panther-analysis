@@ -25,8 +25,8 @@ def get_rules(directory):
     directory_path = Path(directory)
     rules = {}
     for file_path in directory_path.rglob('*'):
-     if file_path.is_file():
-        rules[file_path.name] = file_path
+        if file_path.is_file() and "sigma" not in file_path.parent.name:
+            rules[file_path.name] = file_path
     return rules
 
 def create_pack(rules):
@@ -55,7 +55,7 @@ def create_pack(rules):
             return super().increase_indent(flow, False)
 
     pack_yaml = yaml.dump(pack, Dumper=IndentDumper, sort_keys=False)
-    with open("./packs/alchemy_sigma.yml", "w") as f:
+    with open("../packs/alchemy_sigma.yml", "w") as f:
         f.write(pack_yaml)
 
 def main():
