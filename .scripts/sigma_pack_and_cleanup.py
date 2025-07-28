@@ -55,7 +55,7 @@ def create_pack(rules):
             return super().increase_indent(flow, False)
 
     pack_yaml = yaml.dump(pack, Dumper=IndentDumper, sort_keys=False)
-    with open("../packs/alchemy_sigma.yml", "w") as f:
+    with open("./packs/alchemy_sigma.yml", "w") as f:
         f.write(pack_yaml)
 
 def main():
