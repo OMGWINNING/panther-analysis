@@ -1,6 +1,6 @@
 AnalysisType: rule
 Filename: github_branch_policy_override_modified.py
-RuleID: GitHub.Branch.PolicyOverride.Modified
+RuleID: gitHub.branch.policyoverride.modified
 DisplayName: "GitHub Branch Protection Policy Override Modified"
 Enabled: false
 LogTypes:

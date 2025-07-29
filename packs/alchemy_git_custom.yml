@@ -4,6 +4,6 @@ Description: Group of all Custom Alchemy Github detections
 PackDefinition:
   IDs:
     - gen00003.privesc.github.patgranted.prod
-    - GitHub.Branch.PolicyOverride.Modified
+    - gitbub.branch.policyoverride.modified
     - Standard.Github.Audit
 DisplayName: "Alchemy Custom Github Pack"
