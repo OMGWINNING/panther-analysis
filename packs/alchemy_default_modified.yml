@@ -7,5 +7,5 @@ PackDefinition:
 
     # Data Models
     - Standard.Github.Audit
-    - Standard.AWS.Cloudtrail
+    - Standard.AWS.CloudTrail
 DisplayName: "Alchemy Modified Defaults Pack"
