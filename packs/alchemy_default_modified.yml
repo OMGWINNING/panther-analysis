@@ -4,9 +4,9 @@ Description: Group of all Alchemy Default detections that were modified
 PackDefinition:
   IDs:
     # Rules
-	- GitHub.Branch.PolicyOverride.Modified
-	
-	# Data Models
-	- Standard.Github.Audit
-	- Standard.AWS.Cloudtrail
+    - GitHub.Branch.PolicyOverride.Modified
+
+    # Data Models
+    - Standard.Github.Audit
+    - Standard.AWS.Cloudtrail
 DisplayName: "Alchemy Modified Defaults Pack"
