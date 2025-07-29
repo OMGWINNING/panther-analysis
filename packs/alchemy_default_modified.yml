@@ -1,8 +1,0 @@
-AnalysisType: pack
-PackID: AlchemyManaged.Modified.Defaults
-Description: Group of all Alchemy Default detections that were modified
-PackDefinition:
-  IDs:
-    - GitHub.Branch.PolicyOverride.Modified
-    - Standard.Github.Audit
-DisplayName: "Alchemy Modified Defaults Pack"
