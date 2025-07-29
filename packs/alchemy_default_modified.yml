@@ -5,5 +5,4 @@ PackDefinition:
   IDs:
     - GitHub.Branch.PolicyOverride.Modified
     - Standard.Github.Audit
-    - Standard.AWS.Cloudtrail
 DisplayName: "Alchemy Modified Defaults Pack"
