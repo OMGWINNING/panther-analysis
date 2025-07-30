@@ -8,4 +8,6 @@ PackDefinition:
     # Data Models
     - Standard.Github.Audit
     - Standard.AWS.CloudTrail
+    # Global Imports
+    - global_filter_github
 DisplayName: "Alchemy Modified Defaults Pack"
