@@ -1,3 +1,4 @@
+import global_filter_github
 from global_filter_github import filter_include_event
 
 def rule(event):
