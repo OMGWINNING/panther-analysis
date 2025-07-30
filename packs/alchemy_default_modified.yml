@@ -4,8 +4,10 @@ Description: Group of all Alchemy Default detections that were modified
 PackDefinition:
   IDs:
     # Rules
-
+    - github.branch.policyoverride.modified
     # Data Models
     - Standard.Github.Audit
     - Standard.AWS.CloudTrail
+    # Global Imports
+    - global_filter_github
 DisplayName: "Alchemy Modified Defaults Pack"
