@@ -1,3 +1,5 @@
+name: Check Deprecated (Internal)
+
 on:
   pull_request:
     branches:
@@ -33,4 +35,3 @@ jobs:
       - name: Check for Removed Rules
         run: |
           pipenv run make check-deprecated
-
