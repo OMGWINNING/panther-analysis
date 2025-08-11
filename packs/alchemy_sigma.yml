@@ -81,6 +81,7 @@ PackDefinition:
     - okta_api_token_revoked
     - okta_application_modified_or_deleted
     - okta_application_sign_on_policy_modified_or_deleted
+    - okta_apt_suspicious_user_creation
     - okta_fastpass_phishing_detection
     - okta_identity_provider_created
     - okta_mfa_reset_or_deactivated
