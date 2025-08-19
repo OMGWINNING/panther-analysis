@@ -16,10 +16,10 @@ LogTypes:
 Reference: https://docs.aws.amazon.com/config/latest/developerguide/cloudtrail-log-files-for-aws-config.html
 Reports:
   MITRE ATT&CK:
-  - TA0005:T1562.001
+  - TA0005:T1562.008
 RuleID: aws_config_disable_recording
 Severity: High
 Tags:
 - Sigma
 - defense-evasion
-- t1562.001
+- t1562.008

@@ -18,9 +18,11 @@ Reference: https://github.com/Lifka/hacking-resources/blob/c2ae355d381bd0c9f0b32
 Reports:
   MITRE ATT&CK:
   - TA0007:T1580
+  - TA0007:T1619
 RuleID: aws_enum_buckets
 Severity: Low
 Tags:
 - Sigma
 - discovery
 - t1580
+- t1619
